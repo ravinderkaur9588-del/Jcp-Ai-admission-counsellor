@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JCP AI Counsellor — Real AI Trial</title>
+<style>
+body{margin:0;background:#faf4f5;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#222}
+.wrap{max-width:900px;margin:20px auto;background:#fff;border:1px solid #eadcdf;border-radius:22px;overflow:hidden;box-shadow:0 12px 35px #4a07151a}
+.top{background:linear-gradient(90deg,#76051a,#a10c26);color:white;padding:18px 20px}
+.top b{font-size:20px}.top small{display:block;margin-top:4px;opacity:.9}
+.chat{height:650px;display:flex;flex-direction:column}.msgs{flex:1;overflow:auto;padding:18px;background:#fffdfd}
+.msg{max-width:78%;padding:12px 14px;border-radius:16px;margin:8px 0;white-space:pre-wrap;line-height:1.45}
+.a{background:#f2e7e9;border-bottom-left-radius:4px}.u{margin-left:auto;background:#76051a;color:white;border-bottom-right-radius:4px}
+.quick{display:flex;gap:7px;flex-wrap:wrap;padding:9px 12px;border-top:1px solid #eee}
+.quick button{border:1px solid #d8c1c7;background:#fff8f9;color:#76051a;border-radius:999px;padding:8px 10px;font-weight:700}
+.bar{display:flex;gap:8px;padding:12px;border-top:1px solid #eee}.bar input{flex:1;padding:13px;border:1px solid #ccc;border-radius:12px}.bar button{background:#76051a;color:white;border:0;border-radius:12px;padding:0 18px;font-weight:800}
+.note{font-size:11px;color:#777;padding:0 14px 10px}
+</style></head>
+<body><div class="wrap"><div class="top"><b>🎓 JCP AI Counsellor</b><small>Real AI trial • Hindi • Hinglish • English • Punjabi</small></div>
+<div class="chat"><div id="msgs" class="msgs"></div>
+<div id="quick" class="quick"></div>
+<div class="bar"><input id="in" placeholder="Ask anything about B.Pharm admission..."><button id="send">Send</button></div>
+<div class="note">AI replies are based on the supplied JCP knowledge. Final admission/fee/scholarship details should be confirmed by the college.</div>
+</div></div>
+<script>
+const msgs=document.getElementById("msgs"), input=document.getElementById("in"), quick=document.getElementById("quick");
+let history=[];
+function add(text,role){let d=document.createElement("div");d.className="msg "+(role==="user"?"u":"a");d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+function buttons(arr){quick.innerHTML="";arr.forEach(x=>{let b=document.createElement("button");b.textContent=x;b.onclick=()=>{input.value=x;send()};quick.appendChild(b)})}
+add("👋 Namaste! Welcome to Janta College of Pharmacy.\\n\\nMain JCP AI Counsellor hoon. 😊\\n\\nAap B.Pharm admission, fees, scholarship, facilities, global exposure, career, interview preparation ya personal development ke baare mein pooch sakte hain.\\n\\nAap Hindi, Hinglish, English ya Punjabi mein baat kar sakte hain.","assistant");
+buttons(["💰 Fees","🎓 SC Scholarship","🏫 Why JCP?","🌍 Global Exposure","💼 Career","📋 Admission"]);
+async function send(){
+ let text=input.value.trim(); if(!text)return; input.value=""; quick.innerHTML="";
+ add(text,"user"); history.push({role:"user",content:text});
+ add("Typing…","assistant"); let typing=msgs.lastChild;
+ try{
+   const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:history})});
+   const data=await r.json(); typing.remove();
+   if(!r.ok) throw new Error(data.error||"Request failed");
+   add(data.reply,"assistant"); history.push({role:"assistant",content:data.reply});
+ }catch(e){typing.textContent="Sorry, AI service connect nahi ho payi. Server/API key check karein."; console.error(e)}
+}
+document.getElementById("send").onclick=send;
+input.addEventListener("keydown",e=>{if(e.key==="Enter")send()});
+</script></body></html>
