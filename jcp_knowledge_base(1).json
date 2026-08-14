@@ -1,0 +1,54 @@
+{
+  "college": "Janta College of Pharmacy",
+  "management": "GBS Education Society",
+  "course": "B.Pharm (4-Year Full-Time Degree Course)",
+  "session": "2026-27",
+  "approval": "Approved by PCI and Pt. B.D. Sharma University of Health Science, Rohtak.",
+  "address": "Saraswati Nagar (Mustafabad), Distt. Yamuna Nagar - 133103, Haryana",
+  "phones": [
+    "94168-39762",
+    "94164-99437",
+    "80591-80598"
+  ],
+  "fees": {
+    "registration": "₹10,000",
+    "early_bird": "₹80,000 for the first 20 students",
+    "regular": "₹90,000"
+  },
+  "five_reasons": [
+    "Experienced faculty — highly qualified and well-experienced faculty members.",
+    "World-class facilities — well-equipped labs and a library with 24-hour reading facility.",
+    "Global collaborations — collaborations with renowned universities around the globe.",
+    "Hands-on training — practical exposure with an in-house industry set-up.",
+    "Strong placements — placement support in reputed pharma industries."
+  ],
+  "program_highlights": [
+    "4-year full-time degree",
+    "Internship & industrial training",
+    "Focus on skill & innovation",
+    "Commitment to student success"
+  ],
+  "career_areas": [
+    "Pharmaceutical Industry",
+    "Hospital Pharmacy",
+    "Research & Development",
+    "Academic & more"
+  ],
+  "facilities": [
+    "Smart classrooms",
+    "AC classes",
+    "24-hour library",
+    "HAP Lab",
+    "Pharmacology Lab",
+    "Pharmacognosy Lab",
+    "Herbal garden",
+    "College transport"
+  ],
+  "student_development": [
+    "Global exposure opportunities",
+    "Interview preparation",
+    "Personal development",
+    "Communication, confidence and presentation development"
+  ],
+  "sc_support": "For eligible SC-category students, JCP provides scholarship-related support as described by the college: initially ₹10,000 is to be paid, and the remaining fee can be paid after the scholarship is received, subject to the applicable scholarship process and final confirmation by the admission office."
+}

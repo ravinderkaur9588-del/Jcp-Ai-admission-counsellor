@@ -1,0 +1,14 @@
+{
+  "name": "jcp-real-ai-counsellor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Janta College of Pharmacy multilingual AI admission counsellor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "openai": "^5.0.0"
+  }
+}
