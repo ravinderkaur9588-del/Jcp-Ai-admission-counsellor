@@ -5,7 +5,7 @@ const OpenAI = require("openai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MODEL = process.env.OPENAI_MODEL || "gpt-5-mini";
+const MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const kb = JSON.parse(
